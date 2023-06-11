@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>选择器</title>
+
+
+    <style>
+        div span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>水平居中</div>
+    <div style="margin: 0 auto; width:200px; border: 1px solid #cccccc; text-align: center;">
+        Hello World!
+    </div>
+    <dive>复合选择器，后代选择器-后代所有都改变</dive>
+    <span>span标签</span>
+    <div>
+        <span>这是div的儿子span
+            <p>
+                <span>孙子也改变</span>
+            </p>
+        </span>
+    </div>
+  
+
+</body>
+ 
+</html>
