@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外边距折叠现象</title>
+
+
+    <style>
+        .box-1 {
+            width: 100px;
+            height: 100px;
+            background-color: #698e6a;
+            margin-bottom: 50px;
+        }
+
+        .box-2 {
+            margin-top: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: #7f9faf;
+        }
+
+        .box-father {
+            width: 200px;
+            height: 200px;
+            background-color: #b2b6b6;
+        }
+
+        .box-child {
+            width: 100px;
+            height: 100px;
+            background-color: #7f9faf;
+            margin-top: 100px;
+        }
+
+        .resolve {
+            overflow: hidden;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            合并现象
+            塌陷现象
+            （1）合并现象
+
+            场景：垂直布局的块级元素，上下的 margin 会合并
+            结果：最终两者距离为 margin 的最大值
+            解决方法：只给其中一个盒子设置 margin
+        </div>
+        <div>
+            <div class="box-1"></div>
+            <div class="box-2"></div>
+        </div>
+        <div>
+            （2）塌陷现象
+
+            场景：相互嵌套的块级元素，子元素的 margin-top 会作用在父元素上
+            结果：导致父元素一起往下移动
+            解决方法：
+            给父元素设置 border-top 或者 padding-top(分隔父子元素的 margin-top)
+            给父元素设置 overflow:hidden;
+            转换为行内块元素
+            设置浮动
+        </div>
+
+        <div class="box-wrap">
+            <!-- 元素的margin-top 作用在了父元素上 -->
+            <div class="box-father">
+                <div class="box-child"></div>
+            </div>
+
+            <!-- [完美解决方案]给父元素设置 overflow:hidden; -->
+            <div class="box-father resolve">
+                <div class="box-child"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
